@@ -1,0 +1,122 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    .food-container, .wing-container, .snacks-container, .drinks-container{
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        .title{
+            width: 100%;
+            h3{
+                margin: 0;
+            }
+        }
+        .hamburger, .wings, .snacks, .drink{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 160px;
+            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            height: 228px;
+            text-align: center;
+            img{
+                width: 48px;
+            }            
+        }
+    }
+    ::ng-deep mat-form-field{
+        max-width: 128px;
+        .mdc-text-field--outlined{
+            height: 36px !important;
+        }
+        .mat-mdc-form-field-flex{
+            height: 36px !important;
+        }
+        .mdc-text-field--outlined .mat-mdc-form-field-infix, .mdc-text-field--no-label .mat-mdc-form-field-infix{
+            padding-top: 6px !important;
+            padding-bottom: 6px !important;
+            input{
+                text-align: center;
+            }
+        }
+    }
+    .button-primary{
+        margin-left: auto;
+        width: auto;
+    }
+    .nav{
+        max-width: 30vw;
+
+    }
+    .exceptions-container, .extras-container{
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+        span{
+            font-size: 12px;
+            text-align: center;
+        }
+    }
+    .exceptions,.extras{
+        height: 48px;
+        width: 48px;
+        object-fit: contain;
+    }
+    ::ng-deep .mdc-checkbox{
+        display: none !important;
+    }
+    ::ng-deep .mat-mdc-checkbox{
+        padding: 8px;
+        border-radius: 8px;
+    }
+    ::ng-deep .mat-mdc-checkbox-checked{
+        background: var(--secondary);
+        color: white !important;
+    }
+    .ingredientsContainer{
+        background-color: #F1F5F9;
+        padding: 8px;
+        border-radius: 16px;
+        margin: 0 16px;
+    }
+    ::ng-deep {
+        .mat-drawer-content{
+            margin-left: 0 !important;
+
+        }
+    }
+    .container-exceptions{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+    &.float-container{
+        position: relative;
+        height: calc(100vh - 64px);
+        overflow-y: scroll;
+    }
+    .float{
+        position: sticky;
+        bottom: 16px;
+        right: 16px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    ::ng-deep .count{
+        .mat-mdc-text-field-wrapper{
+            box-shadow: 0 20px 25px -5px var(--secondaryOpacity), 0 8px 10px -6px var(--secondaryOpacity);
+        }
+        
+    }
+    .comments{
+        padding: 0 16px;
+        textarea{
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<section>
+    <img src="assets/logo.png" alt="" />
+    <form class="form" [formGroup]="form_signin" (ngSubmit)="signin()">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label><input type="text" matInput formControlName="name"/><mat-icon matPrefix>person</mat-icon>
+            <mat-error>Ingresa un valor válido</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label><input type="text" matInput formControlName="password" type="password" /><mat-icon
+                matPrefix>password</mat-icon><mat-error></mat-error>
+        </mat-form-field>
+        <button type="submit" class="button-primary">Entrar</button>
+        
+    </form>
+    
+</section>

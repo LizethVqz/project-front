@@ -1,0 +1,138 @@
+<form [formGroup]="_order.formOrder" class="container float-container">
+    <mat-sidenav-container hasBackdrop="false">
+        <mat-sidenav #barraComentarios position="end" mode="push" class="nav">
+            <div formArrayName="order_details">
+                @for (product of orderDetailsArray().controls; track product; let productindex = $index) {
+                <h2>{{filterByProduct(product.value.products_idproducts)?.name}} {{product.value.amount}}</h2>
+                @if (filterByIngredient('required', 0, filterByProduct(product.value.products_idproducts)?.ingredients,
+                product.value.products_idproducts, product.value.amount)?.length){
+                <div class="ingredientsContainer">
+                    <div>
+                        <mat-label>
+                            Excepciones
+                        </mat-label>
+                    </div>
+                    <div class="container-exceptions">
+                        @for (ingredient of filterByIngredient('required', 0,
+                        filterByProduct(product.value.products_idproducts)?.ingredients,
+                        product.value.products_idproducts,
+                        product.value.amount); track $index) {
+                        <mat-checkbox #options [checked]="ingredientsSelected(productindex, 0, ingredient.name)"
+                            (click)="addIngredient(product.value.products_idproducts, ingredient.idingredients, 0, options.checked, product.value.amount, ingredient.name, 0)">
+                            <div class="exceptions-container">
+                                <img class="exceptions" src="../../../assets/{{ingredient.name}}.png">
+                                <span class="text-xs">{{ingredient.name}}</span>
+                            </div>
+                        </mat-checkbox>
+                        }
+                    </div>
+                </div>
+                <br>
+                }
+
+                @if (filterByIngredient('extra', 1, filterByProduct(product.value.products_idproducts)?.ingredients,
+                product.value.products_idproducts, product.value.amount)?.length){
+                <div class="ingredientsContainer">
+                    <mat-label>
+                        Extras
+                    </mat-label>
+                    <br>
+                    <div class="container-exceptions">
+                        @for (ingredient of filterByIngredient('extra', 1,
+                        filterByProduct(product.value.products_idproducts)?.ingredients,
+                        product.value.products_idproducts,
+                        product.value.amount); track ingredient;let indexingredient = $index) {
+                        <mat-checkbox #optionsExtra [checked]="ingredientsSelected(productindex, 1, ingredient.name)"
+                            (click)="addIngredient(product.value.products_idproducts, ingredient.idingredients, 1, optionsExtra.checked, product.value.amount, ingredient.name, ingredient.cost)">
+                            <div class="extras-container">
+                                <img class="extras" #imagen src="../../../assets/{{ingredient.name}}.png">
+                                <span class="text-xs">{{ingredient.name}}</span>
+                                <span class="text-xs">{{ingredient.cost | currency}}</span>
+                            </div>
+                        </mat-checkbox>
+                        }
+                    </div>
+                </div>
+                <br>
+                }
+
+                <div class="comments" [formGroupName]="productindex">
+                    <textarea rows="5" placeholder="Comentarios" formControlName="comments"></textarea>
+                </div>
+                }
+            </div>
+
+        </mat-sidenav>
+        <mat-sidenav-content [ngStyle]="{padding: '2% 5%'}">
+            <div>
+                <div class="food-container">
+                    <div class="title">
+                        <h2>Hamburguesas</h2>
+                        <h3>Todas las hamburguesas contienen jamon, queso, tocino, jitomate, cebolla, aguacate, lechuga,
+                            mayonesa y mostaza</h3>
+                        <h3>Acompañado de papas a la francesa</h3>
+                    </div>
+                    @for (product of filterByCategory('da99cc44-03a0-457a-8711-4660c3b5b45b'); track $index) {
+                    <div class="hamburger">
+                        <img src="../../../assets/Hamburguesa.png">
+                        <h4>{{product.name}}</h4>
+                        <h5>{{product.description}}</h5>
+                        <mat-form-field appearance="outline" [ngClass]="amount(product.idproducts)>0?'count':''">
+                            <mat-icon (click)="removeProduct(product.idproducts)" matPrefix>remove</mat-icon>
+                            <input type="number" matInput [value]="amount(product.idproducts)">
+                            <mat-icon
+                                (click)="addProduct(product.idproducts,product.price, product.name, product.name_category)"
+                                matSuffix>add</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    }
+                    <div class="exceptions">
+
+                    </div>
+                </div>
+            </div>
+            <div class="wing-container">
+                <div class="title">
+                    <h2>Alitas</h2>
+                    <h3>La orden de alitas contiene 5 piezas</h3>
+                </div>
+                @for (product of filterByCategory('64afaea8-be6c-49ae-8e99-32132dd89630'); track $index) {
+                <div class="wings">
+                    <img src="../../../assets/Alitas.png">
+                    <h4>{{product.name}}</h4>
+                    <h5>{{product.description}}</h5>
+                    <mat-form-field appearance="outline">
+                        <mat-icon (click)="removeProduct(product.idproducts)" matPrefix>remove</mat-icon>
+                        <input type="number" matInput [value]="amount(product.idproducts)">
+                        <mat-icon
+                            (click)="addProduct(product.idproducts,product.price, product.name, product.name_category)"
+                            matSuffix>add</mat-icon>
+                    </mat-form-field>
+                </div>
+                }
+            </div>
+            <div class="snacks-container">
+                <div class="title">
+                    <h2>Snacks</h2>
+                </div>
+                @for (product of filterByCategory('4716bb4e-0793-4c76-9b48-3dd8e7a9ba9a'); track $index) {
+                <div class="snacks">
+                    <img src="../../../assets/{{product.name}}.png" #img (error)="img.src='../../../assets/Snack.png'">
+                    <h4>{{product.name}}</h4>
+                    <h5>{{product.description}}</h5>
+                    <mat-form-field appearance="outline">
+                        <mat-icon (click)="removeProduct(product.idproducts)" matPrefix>remove</mat-icon>
+                        <input type="number" matInput [value]="amount(product.idproducts)">
+                        <mat-icon
+                            (click)="addProduct(product.idproducts,product.price, product.name, product.name_category)"
+                            matSuffix>add</mat-icon>
+                    </mat-form-field>
+                </div>
+                }
+            </div>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+    <div class="float"><button class="button-primary" [routerLink]="['/private/order-view']"
+            routerLinkActive="router-link-active">Siguiente</button></div>
+</form>

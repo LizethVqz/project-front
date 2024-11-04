@@ -1,0 +1,81 @@
+<section class="order-container float-container">
+    <form [formGroup]="_order.formOrder" (ngSubmit)="placeOrder()">
+    <div class="buttons">
+        <h1>Orden</h1>
+            <mat-form-field>
+                <mat-label>
+                    Cliente
+                </mat-label>
+                <input matInput type="text" formControlName="client">
+            </mat-form-field>
+            <mat-radio-group (change)="selected($event)" class="unselect">
+                <mat-radio-button [value]="1">
+                    Comer aquí
+                </mat-radio-button>
+                <mat-radio-button [value]="0">
+                    Para llevar
+                </mat-radio-button>
+            </mat-radio-group>
+    </div>
+    
+    <div class="products-order" formArrayName="order_details">
+        @for (item of eachProduct().controls; track $index) {
+            <div class="product">
+                <div class="product-container">
+                    <h2>{{item.value.name_category}} {{item.value.name}} </h2>
+                    <div class="order-type-container">
+                        <form action="" [formGroupName]="$index">
+                            <mat-radio-group formControlName="order_type" >
+                                <mat-radio-button [value]="1">
+                                    Comer aquí
+                                </mat-radio-button>
+                                <mat-radio-button [value]="0">
+                                    Para llevar
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </form>
+                        <h5>{{item.value.unit_price | currency}}</h5>
+                        <button type="button"(click)="deleteProduct($index)"><mat-icon>delete</mat-icon></button>
+                    </div>
+                </div>
+                <div class="comments">
+                    @if (filterExtras(item.value, 1).length) {
+                    <h3>Extras</h3>
+                    @for (ingredient of filterExtras(item.value, 1); track $index) {
+                        <div class="extras-container">
+                            <h4>{{ingredient.name}}</h4>
+                            <h5>{{ingredient.price | currency}}</h5>
+                        </div>
+                    }
+                }
+                @if (filterExtras(item.value, 0).length){
+                    <h3>Excepciones</h3>
+                    @for (ingredient of filterExtras(item.value, 0); track $index) {
+                        <div class="exception-container">
+                            <h4>{{ingredient.name}}</h4>
+                        </div>
+                    }
+                }
+                </div>
+            </div>
+        }
+        <div class="total-container">
+            <div class="subtotal">
+                <h4>Subtotal</h4>
+                <h4>{{totalProducts() | currency}}</h4>
+            </div>
+            <div class="total-extras">
+                <h4>Total extras</h4>
+                <h4>{{totalExtras() | currency}}</h4>
+            </div>
+            <div class="total-order">
+                <h3>Total</h3>
+                <h3>{{totalOrder() | currency}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="float"><button class="button-secundary" [routerLink]="['/private/menu']"
+        routerLinkActive="router-link-active">Regresar</button>
+        <button class="button-primary" type="submit">Ordenar</button></div>
+</form>
+</section>

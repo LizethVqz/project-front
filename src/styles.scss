@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  --secondary: #28ae5c;
+  --secondaryOpacity: #28ae5c5a;
+  --primary: cadetblue;
+}
+*{
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+::-webkit-scrollbar{
+  display: none !important;
+
+}
+.mdc-notched-outline__notch{    border-right: 0 !important;
+}
+.button-primary {
+    color: aliceblue;
+    background-color: cadetblue;
+    padding: 8px 12px;
+}
+.button-secundary {
+    color: cadetblue;
+    background-color: aliceblue;
+    padding: 8px 12px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  box-shadow: 0 0 #0000 !important;
+}

@@ -1,0 +1,25 @@
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 384px;
+    justify-content: center;
+}
+img {
+    width: 100%;
+    max-width: 256px;
+}
+.button-secundary{
+    margin-top: 16px;
+    width: 100%;
+    max-width: 384px;
+    text-align: center;
+}
+}

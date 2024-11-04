@@ -1,0 +1,10 @@
+    <h2 mat-dialog-title>Realizar Orden</h2>
+
+    <mat-dialog-content>
+        ¿Está seguro de realizar esta orden?
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end" class="flex gap-x-2">
+        <button [mat-dialog-close]="false" class="button-secundary">Cancelar</button>
+        <button [mat-dialog-close]="true" class="button-primary" cdkFocusInitial (click)="openOrderDetails()">Confirmar</button>
+    </mat-dialog-actions>

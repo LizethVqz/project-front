@@ -1,0 +1,16 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Ventas totales</mat-card-title>
+      <mat-card-subtitle>{{total.total}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-header>
+        <mat-card-title>Promedio tiempo de realizacion</mat-card-title>
+        <mat-card-subtitle>{{avg.minutos}} minutos</mat-card-subtitle>
+      </mat-card-header>
+  </mat-card>  
+<h2>Ventas del mes</h2>
+<canvas baseChart [data]="dataSales" [type]="'bar'" #chartSales></canvas>
+<h2>Mejores clientes</h2>
+<canvas baseChart [data]="dataClient" [type]="'bar'"></canvas>
+<h2>Productos más vendidos</h2>
+<canvas baseChart [data]="dataProduct" [type]="'bar'"></canvas>

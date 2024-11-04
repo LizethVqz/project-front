@@ -1,0 +1,55 @@
+mat-drawer-container{
+    height: 100vh;
+.icon-container{
+    display: flex;
+    flex-direction: column;
+    width: 56px;
+    gap: 16px;
+    padding: 16px;
+}
+mat-drawer{
+    width: 48px;
+    transition-duration: 300ms;
+    &:hover{
+        width: 320px;
+    }
+}
+.log-out{
+    padding: 16px;
+
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+header{
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+div{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    h2{
+        font-size: 24px;
+    }
+}
+h2,h3{
+    margin: 0;
+}
+}
+button{
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    height: 24px;
+    svg{
+        flex-shrink: 0;
+    }
+}
+}

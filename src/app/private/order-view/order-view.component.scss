@@ -1,0 +1,90 @@
+.order-container{
+    padding: 2% 10%;
+    h2{
+        font-weight: 600;
+    }
+    h1{
+        font-weight: 700;
+    }
+    h3,h5{
+        font-weight: 500;
+    }
+    h4,h5,h2,h3{
+        margin: 0 !important;
+    }
+    .product-container{
+        display: flex;
+        justify-content: space-between;
+    }
+    .extras-container, .exception-container{
+        display: flex;
+        justify-content: space-between;
+        padding-left: 2%;
+        background-color: white;
+        border-radius: 8px;
+        padding: 4px;
+    }
+    .products-order{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        .product{
+            background-color: #f1f5f9;
+            padding: 8px;
+            border-radius: 16px; 
+            display: flex;
+            flex-direction: column;
+            gap: 8px;     
+        }    
+    }
+    .comments{
+        padding-left: 2%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .total-container{
+        display: flex;
+        flex-direction: column;
+        place-self: end;
+        padding-bottom: 2%;
+        .subtotal, .total-extras, .total-order{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 320px;
+            width: 100%;
+            min-width: 292px;
+            gap: 16px;
+        }
+    }
+    &.float-container{
+        position: relative;
+        height: calc(100vh - 64px);
+        overflow-y: scroll;
+    }
+    .float{
+        position: sticky;
+        bottom: 16px;
+        right: 16px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .order-type-container, .buttons{
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+    }
+    ::ng-deep {
+        .invalid:not(:has(.mat-mdc-radio-checked)){
+        .mdc-label{
+            color: #f44336;
+        }
+        .mdc-radio__outer-circle{
+            border-color: #f44336 !important;
+        }
+    }
+    }
+
+}
